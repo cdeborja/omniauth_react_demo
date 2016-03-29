@@ -1,0 +1,47 @@
+<!-- <h1>All the posts!</h1> -->
+
+
+<!-- <h<%= 1 %>>
+  All the posts!
+</h<%= 1 %>> -->
+<!-- ^^ silly way of getting h1-->
+
+<% [1, 2, 3, 4, 5, 6].each do |num| %>
+  <h<%= num %>>All the Posts!</h<%= num %>>
+<% end %>
+
+<%# [1, 2, 3].eah { |num| num * 2 } %>
+<%# use '#' to comment out erb  %>
+
+<!-- @posts without erb .... just a string -->
+
+<!-- erb, i.e. madlibs -->
+<!-- fill in the blanks server-side -->
+<!-- your computer just gets plain ol' html-->
+
+<form action="<%= posts_url %>" method="post">
+  <%= auth_token %>
+
+  <label>Title
+    <br>
+    <input type="text" name="post[title]" value="<%= @post.title %>">
+  </label>
+
+  <br>
+  <br>
+
+  <label>Body
+    <br>
+    <textarea name="post[body]" rows="8" cols="40"><%= @post.body %></textarea>
+  </label>
+
+  <br>
+  <input type="submit"value="Create Post">
+
+</form>
+
+<%# @posts.each do |post| %>
+  <%#= render "post", post: post %>
+<%# end %>
+
+<%= render @posts %>

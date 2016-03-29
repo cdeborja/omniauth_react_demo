@@ -1,0 +1,39 @@
+<% url = author.persisted? author_url(author) : authors_url %>
+<% verb = author.persisted? "PATCH" : "POST" %>
+
+<form action="<%= url %>" method="POST">
+  <%= auth_token %>
+  
+  <input type="hidden" name="_method" value="<%= verb %>">
+  
+  <label>
+    Name
+    <input type="text" 
+      name="author[name]" 
+      value="<%= @author.name %>">
+    <!-- Nest your params -->
+  </label>
+  
+  <% if !author.persisted? %>
+  <label>
+    Password
+    <input type="password" name="author[password]">
+  </label>
+  <% end %>
+
+  <label>
+    Country
+    <select name="author[country_id]">
+      <option>Select a country</option>
+      <% Country.all.each do |country| %>
+      <option 
+        <%= "selected" if country.id == @author.id %>
+        value="<%= country.id %>">
+        <%= country.name %>
+      </option>
+      <% end %>
+    </select>
+  </label>
+
+  <input type="submit" value="create author!">
+</form>

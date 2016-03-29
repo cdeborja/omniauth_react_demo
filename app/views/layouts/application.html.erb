@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tumblr</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if logged_in? %>
+
+    <p>Logged in as <%= current_user.name %></p>
+
+    <%= my_button_to("Log Out", session_url, method: :delete) %>
+    <br>
+
+  <% end %>
+
+  <%= flash[:errors].join(", ") if flash[:errors] %>
+
+<%= yield %>
+
+</body>
+</html>
