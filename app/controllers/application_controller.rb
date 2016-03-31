@@ -25,7 +25,9 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_logged_in
-    redirect_to new_session_url unless logged_in?
+    unless logged_in?
+      render text: "You must log in", status: 401
+    end
   end
 
   def ensure_logged_out

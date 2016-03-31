@@ -1,19 +1,19 @@
-<% url = author.persisted? author_url(author) : authors_url %>
-<% verb = author.persisted? "PATCH" : "POST" %>
+<% url = author.persisted? ? author_url(author) : authors_url %>
+<% verb = author.persisted? ? "PATCH" : "POST" %>
 
 <form action="<%= url %>" method="POST">
   <%= auth_token %>
-  
+
   <input type="hidden" name="_method" value="<%= verb %>">
-  
+
   <label>
     Name
-    <input type="text" 
-      name="author[name]" 
+    <input type="text"
+      name="author[name]"
       value="<%= @author.name %>">
     <!-- Nest your params -->
   </label>
-  
+
   <% if !author.persisted? %>
   <label>
     Password
@@ -26,7 +26,7 @@
     <select name="author[country_id]">
       <option>Select a country</option>
       <% Country.all.each do |country| %>
-      <option 
+      <option
         <%= "selected" if country.id == @author.id %>
         value="<%= country.id %>">
         <%= country.name %>
