@@ -32,6 +32,20 @@ class Author < ActiveRecord::Base
     user && user.valid_password?(password) ? user : nil
   end
 
+  def self.find_or_create_by_auth_hash(auth_hash)
+    provider = auth_hash[:provider]
+    uid = auth_hash[:uid]
+
+    author = Author.find_by(provider: provider, uid: uid)
+    return author if author
+
+    Author.create(
+      provider: provider,
+      uid: uid,
+      name: auth_hash[:extra][:raw_info][:name]
+    )
+  end
+
   def self.random_code
     code = SecureRandom::urlsafe_base64;
     while exists?(session_token: code)

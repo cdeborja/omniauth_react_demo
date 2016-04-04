@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     # Set up API routes for session
     resource  :session, only: [:show, :create, :destroy]
   end
+
+  get "auth/facebook/callback", to: "omniauth#facebook"
 end

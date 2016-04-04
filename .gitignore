@@ -20,3 +20,6 @@ bundle.js
 bundle.js.map
 
 *.swp
+
+# Ignore application configuration
+/config/application.yml
