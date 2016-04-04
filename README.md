@@ -19,3 +19,5 @@
 [form]: ./frontend/components/login_form.jsx
 [author]: ./app/models/author.rb
 [controller]: app/controllers/omniauth_controller.rb
+[omniauth_facebook]: https://github.com/mkdynamic/omniauth-facebook
+[facebook_devs]: http://developers.facebook.com
